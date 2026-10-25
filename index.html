@@ -182,5 +182,14 @@ document.getElementById('requestForm').addEventListener('submit',function(e){
 });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = 'https://oqhhtaophusensvdioir.supabase.co';
+  const SUPABASE_ANON_KEY = 'sb_publishable_cAvtbCuTtfi8CLjg90ocVw_ovIo4F7e';
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+  );
+</script>
 </body>
 </html>
