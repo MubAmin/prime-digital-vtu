@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prime Digital Solution — VTU</title>
+<style>
+:root{
+  --site-primary:#075E54; --site-secondary:#DDF7E9; --site-background:#F4F8F6;
+  --site-on-primary:#FFFFFF; --site-on-secondary:#12352E; --site-on-background:#14231F;
+  --site-font-body:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --site-font-heading:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --site-heading-scale:1; --site-spacing-scale:1; --site-radius-scale:1;
+  --site-decoration-opacity:1;
+}
+*{box-sizing:border-box}
+body{margin:0;background:light-dark(#f4f8f6,#0c1714);color:light-dark(#14231f,#edf7f2);font-family:var(--site-font-body)}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.app{min-height:100vh;background:var(--site-background);color:var(--site-on-background);border-radius:0}
+header{background:var(--site-primary);color:var(--site-on-primary);padding:20px max(20px,calc((100vw - 1120px)/2));display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.4px}
+.logo{width:42px;height:42px;border-radius:14px;background:#fff;color:#075e54;display:grid;place-items:center;font-size:22px;font-weight:900}
+.brand small{display:block;font-weight:500;opacity:.78;letter-spacing:0;font-size:12px;margin-top:2px}
+.header-right{display:flex;align-items:center;gap:10px}
+.pill{border:1px solid #ffffff55;background:#ffffff14;color:white;border-radius:999px;padding:9px 13px;font-size:12px}
+main{max-width:1120px;margin:auto;padding:28px 20px 48px}
+.hero{display:grid;grid-template-columns:1.3fr .7fr;gap:20px;align-items:stretch}
+.hero-copy{background:linear-gradient(135deg,#075e54,#0b806b);border-radius:24px;padding:30px;color:white;position:relative;overflow:hidden}
+.hero-copy:after{content:"";position:absolute;width:230px;height:230px;border:1px solid #ffffff30;border-radius:50%;right:-70px;top:-70px;box-shadow:0 0 0 24px #ffffff0c,0 0 0 48px #ffffff0a;opacity:var(--site-decoration-opacity)}
+.eyebrow{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1.4px;color:#b9f5dc}
+h1{font-size:calc(36px * var(--site-heading-scale));line-height:1.08;letter-spacing:-1.4px;margin:13px 0}
+.hero-copy p{color:#e0f5ee;line-height:1.65;max-width:520px;margin:0 0 22px}
+.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:750;background:var(--site-primary);color:white}
+.btn-light{background:#fff;color:#075e54}
+.wallet{background:var(--site-secondary);border-radius:24px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;min-height:230px}
+.wallet .label{font-size:13px;color:#42645b;font-weight:650}
+.balance{font-size:32px;font-weight:850;letter-spacing:-1px;margin:8px 0}
+.wallet small{color:#42645b}
+.wallet-actions{display:flex;gap:10px;margin-top:20px}
+.wallet-actions button{flex:1}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin:30px 0 14px}
+h2{font-size:20px;margin:0;letter-spacing:-.4px}
+.muted{color:#687a73;font-size:13px}
+.services{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.service{border:1px solid #dce8e1;background:#fff;border-radius:18px;padding:17px 15px;text-align:left;min-height:128px;color:#17372e;transition:transform .15s,border-color .15s}
+.service:hover{transform:translateY(-2px);border-color:#75b7a0}
+.icon{height:42px;width:42px;border-radius:13px;background:#e2f7ec;display:grid;place-items:center;font-size:22px;margin-bottom:12px}
+.service strong{display:block;font-size:14px}
+.service span{display:block;font-size:12px;color:#71827a;margin-top:5px;line-height:1.35}
+.grid-two{display:grid;grid-template-columns:1.05fr .95fr;gap:18px}
+.panel{border:1px solid #dce8e1;background:#fff;border-radius:20px;padding:20px;color:#17372e}
+.panel h3{margin:0 0 6px;font-size:17px}
+.panel p{margin:0 0 16px;color:#71827a;font-size:13px;line-height:1.5}
+.form-row{margin:12px 0}
+label{display:block;font-size:12px;font-weight:750;margin-bottom:7px;color:#405a50}
+input,select{width:100%;border:1px solid #d7e3dc;background:#fbfdfc;color:#17372e;border-radius:11px;padding:12px;outline:none}
+input:focus,select:focus{border-color:#14856d;box-shadow:0 0 0 3px #0d87631a}
+.notice{font-size:12px;line-height:1.5;background:#fff6df;color:#6d5111;border-radius:12px;padding:12px;margin:14px 0}
+.transactions{display:flex;flex-direction:column;gap:0}
+.tx{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:13px 0;border-bottom:1px solid #edf2ee}
+.tx:last-child{border:0}
+.tx-left{display:flex;align-items:center;gap:10px}
+.tx-icon{width:36px;height:36px;border-radius:12px;background:#eaf7ef;display:grid;place-items:center}
+.tx strong{font-size:13px;display:block}
+.tx small{font-size:11px;color:#809087}
+.tx-amount{font-size:13px;font-weight:800;text-align:right}
+.status{font-size:10px;color:#8a6913;background:#fff2ce;padding:4px 7px;border-radius:999px;display:inline-block;margin-top:4px}
+footer{text-align:center;padding:20px;color:#7c8c84;font-size:12px}
+.modal-backdrop{position:fixed;inset:0;background:#10251dcc;display:none;align-items:center;justify-content:center;padding:20px;z-index:10}
+.modal{background:#fff;color:#17372e;border-radius:20px;padding:24px;max-width:440px;width:100%;box-shadow:0 20px 80px #0003}
+.modal h3{margin-top:0}
+.modal-actions{display:flex;gap:10px;margin-top:18px}
+.secondary{background:#edf5f0;color:#245548}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#153f34;color:#fff;padding:12px 18px;border-radius:12px;display:none;z-index:20;box-shadow:0 8px 30px #0002;font-size:13px;max-width:90vw}
+@media(max-width:760px){.hero,.grid-two{grid-template-columns:1fr}.services{grid-template-columns:repeat(2,1fr)}header{padding:16px 18px}.header-right .pill{display:none}main{padding:18px 14px 34px}.hero-copy{padding:24px}.wallet{min-height:190px}h1{font-size:32px}}
+@media(prefers-color-scheme:dark){.app{background:#0c1714;color:#edf7f2}.service,.panel{background:#14231f;color:#edf7f2;border-color:#294139}.service span,.muted,.panel p,.tx small{color:#a3b9ae}.tx{border-color:#294139}label{color:#c1d5ca}input,select{background:#0d1a16;color:#edf7f2;border-color:#345248}.wallet{background:#173b30}.wallet .label,.wallet small{color:#b8d5c9}.icon,.tx-icon{background:#21483a}}
+</style>
+</head>
+<body>
+<div class="app" data-sites-preview-theme>
+<header>
+  <div class="brand"><div class="logo">P</div><div>Prime Digital Solution<small>VTU • Bills • Identity print services</small></div></div>
+  <div class="header-right"><span class="pill">🇳🇬 Nigeria</span><button class="pill" onclick="showModal('Account access','Sign-in and account creation will be connected to the secure backend in the production version.')">Sign in</button></div>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="eyebrow">Everyday digital services, made simple</div>
+      <h1>Top up. Pay bills.<br>Get things done.</h1>
+      <p>Buy airtime and data, pay essential bills, and request authorised NIN/BVN slip printing through one convenient dashboard.</p>
+      <button class="btn btn-light" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Explore services ↓</button>
+    </div>
+    <div class="wallet">
+      <div><div class="label">Demo wallet balance</div><div class="balance">₦0.00</div><small>Preview mode — no real funds or payments</small></div>
+      <div class="wallet-actions"><button class="btn" onclick="showModal('Fund wallet','Payment gateway integration is not active in this demo. Production funding will require secure server-side payment verification.')">＋ Fund wallet</button><button class="btn secondary" onclick="showModal('Wallet activity','Your live wallet and transaction history will appear here after secure account setup.')">History</button></div>
+    </div>
+  </section>
+
+  <div class="section-head" id="services"><div><h2>Choose a service</h2><div class="muted" style="margin-top:5px">Select a service to open its request form.</div></div><span class="muted">Prime VTU</span></div>
+  <section class="services">
+    <button class="service" onclick="openService('Airtime')"><div class="icon">📱</div><strong>Buy Airtime</strong><span>MTN, Airtel, Glo, 9mobile</span></button>
+    <button class="service" onclick="openService('Data')"><div class="icon">📶</div><strong>Buy Data</strong><span>Choose network and bundle</span></button>
+    <button class="service" onclick="openService('Electricity')"><div class="icon">⚡</div><strong>Electricity</strong><span>Bill payment request</span></button>
+    <button class="service" onclick="openService('Cable TV')"><div class="icon">📺</div><strong>Cable TV</strong><span>DStv, GOtv, Startimes</span></button>
+    <button class="service" onclick="openService('NIN Premium Slip')"><div class="icon">🪪</div><strong>NIN Premium Slip</strong><span>Authorised printing request</span></button>
+    <button class="service" onclick="openService('NIN Standard Slip')"><div class="icon">🧾</div><strong>NIN Standard Slip</strong><span>Authorised printing request</span></button>
+    <button class="service" onclick="openService('NIN Normal Slip')"><div class="icon">📄</div><strong>NIN Normal Slip</strong><span>Authorised printing request</span></button>
+    <button class="service" onclick="openService('BVN Slip')"><div class="icon">🏦</div><strong>BVN Slip</strong><span>Authorised BVN print/retrieval</span></button>
+    <button class="service" onclick="openService('Exam PINs')"><div class="icon">🎓</div><strong>Exam PINs</strong><span>WAEC / NECO, subject to provider</span></button>
+    <button class="service" onclick="openService('Other service')"><div class="icon">✨</div><strong>Other services</strong><span>Ask about available digital services</span></button>
+  </section>
+
+  <div class="section-head"><div><h2>Make a service request</h2><div class="muted" style="margin-top:5px">This is a front-end demo; submissions are not sent anywhere.</div></div></div>
+  <section class="grid-two">
+    <div class="panel">
+      <h3 id="formTitle">Start a request</h3>
+      <p>Choose a service above or fill the form below.</p>
+      <form id="requestForm">
+        <div class="form-row"><label for="serviceType">Service</label><select id="serviceType" required><option value="">Select service</option><option>Airtime</option><option>Data</option><option>Electricity</option><option>Cable TV</option><option>NIN Premium Slip</option><option>NIN Standard Slip</option><option>NIN Normal Slip</option><option>BVN Slip</option><option>Exam PINs</option><option>Other service</option></select></div>
+        <div class="form-row" id="networkRow"><label for="network">Network / provider</label><select id="network"><option>MTN</option><option>Airtel</option><option>Glo</option><option>9mobile</option><option>DStv</option><option>GOtv</option><option>Startimes</option><option>Electricity provider</option><option>Not applicable</option></select></div>
+        <div class="form-row"><label for="customerName">Full name</label><input id="customerName" placeholder="Your name" required></div>
+        <div class="form-row"><label for="contact">Phone number</label><input id="contact" inputmode="tel" placeholder="08012345678" required></div>
+        <div class="form-row" id="accountRow"><label for="account">Phone / meter / smartcard number</label><input id="account" placeholder="Enter the relevant number"></div>
+        <div class="form-row"><label for="notes">Request details (optional)</label><input id="notes" placeholder="Plan, amount, slip type, or other details"></div>
+        <div class="notice" id="identityNotice">For NIN/BVN printing, use only your own details or details you are authorised to handle. This demo does not collect or process NIN/BVN numbers or generate identity documents.</div>
+        <button type="submit" class="btn" style="width:100%">Preview request</button>
+      </form>
+    </div>
+    <div class="panel">
+      <h3>Recent activity</h3><p>Sample transactions shown for layout preview only.</p>
+      <div class="transactions">
+        <div class="tx"><div class="tx-left"><div class="tx-icon">📶</div><div><strong>Data bundle</strong><small>MTN • Sample transaction</small></div></div><div class="tx-amount">₦1,000<br><span class="status">Demo</span></div></div>
+        <div class="tx"><div class="tx-left"><div class="tx-icon">🪪</div><div><strong>NIN Standard Slip</strong><small>Print request • Sample</small></div></div><div class="tx-amount">—<br><span class="status">Not submitted</span></div></div>
+        <div class="tx"><div class="tx-left"><div class="tx-icon">📱</div><div><strong>Airtime top-up</strong><small>Airtel • Sample transaction</small></div></div><div class="tx-amount">₦500<br><span class="status">Demo</span></div></div>
+      </div>
+      <div class="notice" style="margin-top:18px">Production checklist: connect a verified VTU API, payment gateway, secure database, authentication, server-side transaction ledger, and authorised NIN/BVN service workflow before accepting real orders.</div>
+    </div>
+  </section>
+</main>
+<footer>© 2026 Prime Digital Solution · Prototype only · No live transactions are processed</footer>
+</div>
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><h3 id="modalTitle">Request preview</h3><div id="modalBody"></div><div class="modal-actions"><button class="btn secondary" onclick="closeModal()">Close</button><button class="btn" id="modalOk" onclick="closeModal()">Okay</button></div></div></div>
+<div class="toast" id="toast"></div>
+<script>
+const serviceType=document.getElementById('serviceType');
+const networkRow=document.getElementById('networkRow');
+const accountRow=document.getElementById('accountRow');
+const identityNotice=document.getElementById('identityNotice');
+function openService(name){
+ serviceType.value=name;
+ document.getElementById('formTitle').textContent=name+' request';
+ document.getElementById('requestForm').scrollIntoView({behavior:'smooth',block:'start'});
+ updateForm();
+}
+function updateForm(){
+ const s=serviceType.value;
+ const identity=s.startsWith('NIN')||s==='BVN Slip';
+ networkRow.style.display=identity?'none':'block';
+ accountRow.style.display=(s==='Other service'||identity||!s)?'none':'block';
+ identityNotice.style.display=identity?'block':'none';
+}
+serviceType.addEventListener('change',updateForm);
+function showModal(title,body){
+ document.getElementById('modalTitle').textContent=title;
+ document.getElementById('modalBody').textContent=body;
+ document.getElementById('modalBackdrop').style.display='flex';
+}
+function closeModal(){document.getElementById('modalBackdrop').style.display='none'}
+document.getElementById('requestForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ const s=serviceType.value;
+ const name=document.getElementById('customerName').value.trim();
+ const contact=document.getElementById('contact').value.trim();
+ const details=document.getElementById('notes').value.trim();
+ const number=document.getElementById('account').value.trim();
+ let message='Demo request preview\\n\\nService: '+s+'\\nName: '+name+'\\nContact: '+contact;
+ if(number)message+='\\nReference number: '+number;
+ if(details)message+='\\nDetails: '+details;
+ message+='\\n\\nNothing has been sent or charged. A production version will submit this securely after backend and provider integration.';
+ showModal('Review your request',message);
+});
+</script>
+</body>
+</html>
